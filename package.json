@@ -4,11 +4,15 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "wrangler:deploy": "pnpm -F nextjs run deploy "
+        "clean": "rm -rf .turbo node_modules",
+        "clean:workspaces": "turbo clean",
+        "clean:workspaces:all": "pnpm clean:workspaces && pnpm clean",
+        "wrangler:deploy-nextjs": "pnpm -F nextjs run deploy",
+        "wrangler:deploy-api": "pnpm -F api run deploy"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
-    "packageManager": "pnpm@8.15.3"
+    "packageManager": "pnpm@8.15.3",
+    "devDependencies": {}
 }
