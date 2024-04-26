@@ -1,15 +1,27 @@
 {
 	"name": "@acme/api",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"default": "./src/index.ts"
+		}
+	},
 	"scripts": {
 		"dev": "wrangler dev src/index.ts",
 		"deploy": "wrangler deploy --minify src/index.ts",
-		"clean": "rm -rf .turbo node_modules"
+		"clean": "rm -rf .turbo node_modules",
+		"format:check": "prettier --check . --ignore-path ../../.gitignore",
+		"format:fix": "prettier --write . --ignore-path ../../.gitignore",
+		"lint": "eslint",
+		"typecheck": "tsc --noEmit --emitDeclarationOnly false"
 	},
 	"dependencies": {
 		"hono": "^4.2.7"
 	},
 	"devDependencies": {
 		"@acme/tsconfig": "workspace:*",
+		"@acme/prettier-config": "workspace:*",
+		"@acme/eslint-config": "workspace:*",
 		"@cloudflare/workers-types": "^4.20240403.0",
 		"wrangler": "^3.47.0"
 	},

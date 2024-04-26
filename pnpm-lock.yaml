@@ -93,6 +93,9 @@ importers:
         specifier: ^3.3.0
         version: 3.4.3
     devDependencies:
+      '@acme/api':
+        specifier: workspace:*
+        version: link:../../packages/api
       '@acme/eslint-config':
         specifier: workspace:*
         version: link:../../tooling/eslint
@@ -136,9 +139,18 @@ importers:
         specifier: ^18
         version: 18.2.0(react@18.2.0)
     devDependencies:
+      '@acme/api':
+        specifier: workspace:*
+        version: link:../../packages/api
+      '@acme/db':
+        specifier: workspace:*
+        version: link:../../packages/db
       '@acme/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/typescript
+      '@acme/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
       '@cloudflare/next-on-pages':
         specifier: '1'
         version: 1.11.1(@cloudflare/workers-types@4.20240423.0)(vercel@34.1.1)(wrangler@3.51.2)
@@ -188,6 +200,12 @@ importers:
         specifier: ^4.2.7
         version: 4.2.7
     devDependencies:
+      '@acme/eslint-config':
+        specifier: workspace:*
+        version: link:../../tooling/eslint
+      '@acme/prettier-config':
+        specifier: workspace:*
+        version: link:../../tooling/prettier
       '@acme/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/typescript
