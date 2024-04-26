@@ -22,5 +22,5 @@ export default app
 
 type AppType = typeof routes
 
-const siteUrl = 'https://my-app.austinm911.workers.dev/'
-export const client = hc<AppType>(siteUrl)
+const apiUrl = 'https://localhost:8787'
+export const client = hc<AppType>(apiUrl)
