@@ -1,31 +1,28 @@
 {
-  "name": "@acme/eslint-config",
+  "name": "@acme/tailwind-config",
+  "version": "0.1.0",
   "private": true,
-  "version": "0.3.0",
   "type": "module",
   "exports": {
-    "./base": "./base.js",
-    "./nextjs": "./nextjs.js",
-    "./react": "./react.js"
+    "./native": "./native.ts",
+    "./web": "./web.ts"
   },
+  "license": "MIT",
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
     "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "eslint",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@next/eslint-plugin-next": "^14.2.0",
-    "eslint-config-turbo": "^1.13.2",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-jsx-a11y": "^6.8.0",
-    "eslint-plugin-react": "^7.34.1",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "typescript-eslint": "^7.6.0"
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@acme/eslint-config": "workspace:*",
     "@acme/prettier-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
-    "@tanstack/eslint-plugin-query": "^5.28.11",
     "eslint": "^9.0.0",
     "prettier": "^3.2.5",
     "typescript": "^5.4.5"
