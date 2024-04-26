@@ -1,25 +1,24 @@
 {
-    "name": "next-cf-monorepo-template",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "clean": "rm -rf .turbo node_modules",
-        "clean:workspaces": "turbo clean",
-        "clean:workspaces:all": "pnpm clean:workspaces && pnpm clean",
-        "wrangler:deploy-nextjs": "pnpm -F nextjs run deploy",
-        "wrangler:deploy-api": "pnpm -F api run deploy"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "packageManager": "pnpm@8.15.3",
-    "devDependencies": {
-        "@acme/prettier-config": "workspace:*",
-        "@turbo/gen": "^1.13.2",
-        "prettier": "^3.2.5",
-        "turbo": "^1.13.2",
-        "typescript": "^5.4.5"
-    },
-    "prettier": "@acme/prettier-config"
+	"name": "next-cf-monorepo-template",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"clean": "rm -rf .turbo node_modules",
+		"clean:workspaces": "turbo clean",
+		"clean:workspaces:all": "pnpm clean:workspaces && pnpm clean",
+		"wrangler:deploy-nextjs": "pnpm -F nextjs run deploy",
+		"wrangler:deploy-api": "pnpm -F api run deploy"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@acme/prettier-config": "workspace:*",
+		"@turbo/gen": "^1.13.2",
+		"prettier": "^3.2.5",
+		"turbo": "^1.13.2",
+		"typescript": "^5.4.5"
+	},
+	"prettier": "@acme/prettier-config"
 }
