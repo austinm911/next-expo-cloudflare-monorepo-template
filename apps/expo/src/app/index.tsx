@@ -3,7 +3,7 @@ import { Text, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { Link } from 'expo-router'
 
-// import { api } from '@/trpc/api'
+import { api } from '@/trpc/api'
 
 export default function Page() {
 	return (
@@ -16,6 +16,7 @@ export default function Page() {
 }
 
 function Content() {
+	const resp = api.post.hello.useQuery(', Sup bro')
 	return (
 		<View className='flex-1'>
 			<View className='py-12 md:py-24 lg:py-32 xl:py-48'>
@@ -27,7 +28,7 @@ function Content() {
 						>
 							Welcome to Project ACME
 						</Text>
-						{/* <Text>{resp.data ?? 'Loading...'}</Text> */}
+						<Text>{resp.data ?? 'Loading...'}</Text>
 						<Text className='mx-auto max-w-[700px] text-center text-lg text-gray-500 dark:text-gray-400 md:text-xl'>
 							Discover and collaborate on amce. Explore our services now.
 						</Text>

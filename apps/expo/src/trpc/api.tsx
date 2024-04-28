@@ -9,16 +9,6 @@ import type { AppRouter } from '@acme/api'
 
 export { type RouterInputs, type RouterOutputs } from '@acme/api'
 
-// Check if React is imported correctly
-if (!React) {
-	console.error('React is not defined. Check your import statements and package installations.')
-}
-
-// Check if useState is available on the React object
-if (typeof React.useState !== 'function') {
-	console.error('useState is not a function on the React object. This could indicate a problem with React imports.')
-}
-
 /**
  * A set of typesafe hooks for consuming your API.
  */

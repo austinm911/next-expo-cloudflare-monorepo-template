@@ -17,13 +17,14 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "acme.mobile" // change to your bundle identifier
+      "bundleIdentifier": "acme.mobile"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "acme.mobile"
     },
     "web": {
       "bundler": "metro",
