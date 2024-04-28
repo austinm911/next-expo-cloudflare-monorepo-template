@@ -1,15 +1,10 @@
 import Image from 'next/image'
 
-import { client } from '@acme/api'
+import { api } from '@/trpc/server'
+import TestClient from './test-client'
 
 export default async function Home() {
-	//TODO: implement tanstack query
-	const testData = await client.mock.$get()
-	const data = await testData.json()
-
-	console.log(data)
-	console.log(testData.url)
-
+	const data = await api.post.hello('I am from the server side')
 	return (
 		<main className='flex min-h-screen flex-col items-center justify-between p-24'>
 			<div className='z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex'>
@@ -19,9 +14,7 @@ export default async function Home() {
 				</p>
 
 				{/* //* Test API backend on CF Workers is working */}
-				{data.map((d) => (
-					<p key={d.id}>{d.message}</p>
-				))}
+				<p>{data}</p>
 
 				<div className='fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none'>
 					<a
@@ -55,6 +48,7 @@ export default async function Home() {
 			</div>
 
 			<div className='mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left'>
+				<TestClient />
 				<a
 					href='https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app'
 					className='group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30'
