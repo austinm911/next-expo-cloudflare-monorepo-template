@@ -36,8 +36,11 @@ const app = new Hono<{ Bindings: Env }>()
 			origin: (origin) => {
 				const appHost = new URL(c.env.APP_URL).host
 				const spaHost = new URL(c.env.APP_SPA_URL).host
-				console.log(appHost, spaHost)
-				return origin.endsWith(appHost) || origin.endsWith(spaHost) ? origin : c.env.APP_URL
+				const spaHostPreview = 'http://localhost:8788' // cloudflare pages preview
+				console.log(appHost, spaHost, spaHostPreview)
+				return origin.endsWith(appHost) || origin.endsWith(spaHost) || origin.endsWith(spaHostPreview)
+					? origin
+					: c.env.APP_URL
 			},
 			credentials: true, // https://trpc.io/docs/client/cors
 			allowMethods: ['GET', 'POST', 'OPTIONS'],
