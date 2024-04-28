@@ -1,9 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { QueryClient, QueryClientConfig, QueryClientProvider } from '@tanstack/react-query'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { httpBatchLink, loggerLink, unstable_httpBatchStreamLink } from '@trpc/client'
-import { createTRPCNext } from '@trpc/next'
 import { createTRPCReact } from '@trpc/react-query'
 import SuperJSON from 'superjson'
 
@@ -40,6 +39,7 @@ export function TRPCReactProvider(props: { children: React.ReactNode }) {
 		api.createClient({
 			links: [
 				loggerLink({
+					// https://trpc.io/docs/client/links/loggerLink
 					enabled: (op) =>
 						process.env.NODE_ENV === 'development' ||
 						(op.direction === 'down' && op.result instanceof Error),
@@ -48,6 +48,12 @@ export function TRPCReactProvider(props: { children: React.ReactNode }) {
 					//? https://trpc.io/docs/client/links/httpBatchStreamLink
 					transformer: SuperJSON,
 					url: getBaseUrl() + '/trpc', // need to inject url
+					fetch(url, options) {
+						return fetch(url, {
+							...options,
+							credentials: 'include',
+						})
+					},
 					headers() {
 						const headers = new Headers()
 						headers.set('x-trpc-source', 'nextjs-react')

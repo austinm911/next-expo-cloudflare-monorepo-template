@@ -16,4 +16,9 @@ const createContext = cache(() => {
 	// Assuming createTRPCContext expects an object with 'env' and 'req' properties
 	return createTRPCContext(heads)
 })
-export const api = createCaller(createContext)
+
+export const api = createCaller(createContext, {
+	onError: (opts) => {
+		console.error('An error occurred:', opts.error)
+	},
+})

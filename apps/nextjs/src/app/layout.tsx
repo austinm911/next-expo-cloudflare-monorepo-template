@@ -7,7 +7,7 @@ import { cn } from '@acme/ui'
 import { ThemeProvider, ThemeToggle } from '@acme/ui/theme'
 import { Toaster } from '@acme/ui/toast'
 
-import { TRPCReactProvider } from '@/trpc/react'
+import { TRPCReactProvider } from '@/trpc/client'
 
 const inter = Inter({ subsets: ['latin'] })
 

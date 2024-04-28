@@ -10,6 +10,8 @@ import type { AppRouter } from './routers.ts'
 import { createTRPCContext } from './context'
 import { appRouter, createCaller } from './routers.ts'
 
+export type { RouterOutputs, RouterInputs } from './routers'
+
 type Env = {
 	APP_URL: string
 	// db: typeof db
@@ -31,7 +33,7 @@ const app = new Hono<{ Bindings: Env }>()
 		}
 		return await cors({
 			origin: (origin) => (origin.endsWith(new URL(c.env.APP_URL).host) ? origin : c.env.APP_URL),
-			credentials: true,
+			credentials: true, // https://trpc.io/docs/client/cors
 			allowMethods: ['GET', 'POST', 'OPTIONS'],
 			// https://hono.dev/middleware/builtin/cors#options
 		})(c, next)

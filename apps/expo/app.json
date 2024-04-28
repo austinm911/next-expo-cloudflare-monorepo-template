@@ -16,7 +16,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "acme.mobile" // change to your bundle identifier
     },
     "android": {
       "adaptiveIcon": {

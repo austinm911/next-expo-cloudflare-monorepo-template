@@ -25,7 +25,7 @@ export const createCaller = createCallerFactory(appRouter)
  * type PostByIdInput = RouterInputs['post']['byId']
  *      ^? { id: number }
  **/
-type RouterInputs = inferRouterInputs<AppRouter>
+export type RouterInputs = inferRouterInputs<AppRouter>
 
 /**
  * Inference helpers for output types
@@ -33,4 +33,4 @@ type RouterInputs = inferRouterInputs<AppRouter>
  * type AllPostsOutput = RouterOutputs['post']['all']
  *      ^? Post[]
  **/
-type RouterOutputs = inferRouterOutputs<AppRouter>
+export type RouterOutputs = inferRouterOutputs<AppRouter>

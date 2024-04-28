@@ -1,6 +1,6 @@
 'use client'
 
-import { api } from '@/trpc/react'
+import { api } from '@/trpc/client'
 
 const TestClient = () => {
 	const resp = api.post.hello.useQuery('Billy Bob from test client')
