@@ -14,6 +14,7 @@ export type { RouterOutputs, RouterInputs } from './routers'
 
 type Env = {
 	APP_URL: string
+	APP_SPA_URL: string
 	// db: typeof db
 }
 
@@ -32,7 +33,12 @@ const app = new Hono<{ Bindings: Env }>()
 			)
 		}
 		return await cors({
-			origin: (origin) => (origin.endsWith(new URL(c.env.APP_URL).host) ? origin : c.env.APP_URL),
+			origin: (origin) => {
+				const appHost = new URL(c.env.APP_URL).host
+				const spaHost = new URL(c.env.APP_SPA_URL).host
+				console.log(appHost, spaHost)
+				return origin.endsWith(appHost) || origin.endsWith(spaHost) ? origin : c.env.APP_URL
+			},
 			credentials: true, // https://trpc.io/docs/client/cors
 			allowMethods: ['GET', 'POST', 'OPTIONS'],
 			// https://hono.dev/middleware/builtin/cors#options

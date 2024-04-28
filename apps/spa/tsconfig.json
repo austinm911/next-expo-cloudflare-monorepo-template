@@ -1,0 +1,15 @@
+{
+  "extends": "@acme/tsconfig/base.json",
+  "compilerOptions": {
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "jsx": "react-jsx",
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["./src/*"]
+		},
+    "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json",
+  },
+  "include": ["src", "*.ts" ,"*.tsx"],
+  "exclude": ["node_modules"]
+}

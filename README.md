@@ -9,3 +9,8 @@ Optional
 
 - [ ] Add tRPC
 - [ ] Add [feat: add no-restricted-properties](https://github.com/t3-oss/create-t3-turbo/pull/999)
+
+
+## Inspiration/Code Examples
+
+- [Turborepo Tailwind Starter](https://github.com/vercel/turbo/tree/main/examples/with-tailwind)
