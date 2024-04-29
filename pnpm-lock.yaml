@@ -349,6 +349,27 @@ importers:
         specifier: ^3.51.2
         version: 3.52.0(@cloudflare/workers-types@4.20240423.0)
 
+  packages/core:
+    devDependencies:
+      '@acme/eslint-config':
+        specifier: workspace:*
+        version: link:../../tooling/eslint
+      '@acme/prettier-config':
+        specifier: workspace:*
+        version: link:../../tooling/prettier
+      '@acme/tsconfig':
+        specifier: workspace:*
+        version: link:../../tooling/typescript
+      eslint:
+        specifier: ^9.0.0
+        version: 9.1.1
+      prettier:
+        specifier: ^3.2.5
+        version: 3.2.5
+      typescript:
+        specifier: ^5.4.3
+        version: 5.4.5
+
   packages/db:
     dependencies:
       '@t3-oss/env-core':
