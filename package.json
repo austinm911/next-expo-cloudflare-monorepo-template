@@ -3,12 +3,29 @@
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
+	"private": true,
+	"engines": {
+		"node": ">=20.12.0"
+	},
+	"packageManager": "pnpm@9.0.6",
 	"scripts": {
+		"dev": "turbo dev --parallel",
+		"build": "turbo build",
+		"db:push": "pnpm -F db push",
+		"db:studio": "pnpm -F db studio",
 		"clean": "rm -rf .turbo node_modules",
 		"clean:workspaces": "turbo clean",
 		"clean:workspaces:all": "pnpm clean:workspaces && pnpm clean",
 		"wrangler:deploy-nextjs": "pnpm -F nextjs run deploy",
-		"wrangler:deploy-api": "pnpm -F api run deploy"
+		"wrangler:deploy-api": "pnpm -F api run deploy",
+		"format": "turbo format --continue -- --cache --cache-location node_modules/.cache/.prettiercache",
+		"format:fix": "turbo format --continue -- --write --cache --cache-location node_modules/.cache/.prettiercache",
+		"lint": "turbo lint --continue -- --cache --cache-location node_modules/.cache/.eslintcache",
+		"lint:fix": "turbo lint --continue -- --fix --cache --cache-location node_modules/.cache/.eslintcache",
+		"lint:ws": "pnpm dlx sherif@latest",
+		"postinstall": "pnpm lint:ws",
+		"typecheck": "turbo typecheck",
+		"ui-add": "pnpm -F ui ui-add"
 	},
 	"keywords": [],
 	"author": "",
