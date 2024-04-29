@@ -32,6 +32,7 @@
 	"license": "ISC",
 	"devDependencies": {
 		"@acme/prettier-config": "workspace:*",
+		"@total-typescript/ts-reset": "^0.5.1",
 		"@turbo/gen": "^1.13.2",
 		"prettier": "^3.2.5",
 		"turbo": "^1.13.2",
