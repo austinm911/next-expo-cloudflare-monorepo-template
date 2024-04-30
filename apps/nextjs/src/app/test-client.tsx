@@ -1,9 +1,11 @@
 'use client'
 
-import { api } from '@/trpc/client'
+import { useMemo } from 'react'
+
+import { trpc } from '@/trpc/client'
 
 const TestClient = () => {
-	const resp = api.post.hello.useQuery('Billy Bob from test client')
+	const resp = trpc.post.hello.useQuery('Billy Bob from test client on' + new Date())
 	console.log(resp.failureReason)
 
 	if (resp.isLoading) {

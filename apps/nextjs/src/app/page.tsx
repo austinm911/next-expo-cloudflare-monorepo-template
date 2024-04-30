@@ -3,6 +3,8 @@ import Image from 'next/image'
 import { api } from '@/trpc/server'
 import TestClient from './test-client'
 
+export const runtime = 'edge'
+
 export default async function Home() {
 	const data = await api.post.hello('I am from the server side')
 	return (

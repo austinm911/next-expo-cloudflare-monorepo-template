@@ -31,7 +31,7 @@
 		"@acme/prettier-config": "workspace:*",
 		"@acme/tailwind-config": "workspace:*",
 		"@acme/tsconfig": "workspace:*",
-		"@cloudflare/next-on-pages": "1",
+		"@cloudflare/next-on-pages": "^1.11.1",
 		"@cloudflare/workers-types": "^4.20240423.0",
 		"@types/node": "^20",
 		"@types/react": "^18.2.79",

@@ -10,6 +10,7 @@ if (process.env.NODE_ENV === 'development') {
 	await setupDevPlatform()
 }
 // Import env files to validate at build time. Use jiti so we can load .ts files in here.
+
 // TODO: add
 // createJiti(fileURLToPath(import.meta.url))('./src/env')
 
@@ -18,7 +19,7 @@ const nextConfig = {
 	// reactStrictMode: true, // not supported by next-on-pages
 
 	/** Enables hot reloading for local packages without a build step */
-	transpilePackages: ['@acme/api', '@acme/db', '@acme/ui'],
+	transpilePackages: ['@acme/api', '@acme/db', '@acme/ui', '@acme/env', '@acme/core'],
 }
 
 export default nextConfig

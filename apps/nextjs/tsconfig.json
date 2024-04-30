@@ -5,14 +5,25 @@
 		"jsx": "preserve",
 		"baseUrl": ".",
 		"paths": {
-			"@/*": ["./src/*"]
+			"@/*": ["./src/*"],
+			"root/*": ["../../node_modules/*"]
 		},
-		"types": ["@cloudflare/workers-types/2023-07-01", "react/canary"],
+		"types": [
+			"@cloudflare/workers-types/2023-07-01",
+			"../../node_modules/@cloudflare/next-on-pages/dist/next-dev/index.d.ts",
+			"react/canary"
+		],
 		"plugins": [{ "name": "next" }],
 		"tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json",
 		"module": "esnext"
 	},
-	"include": [".", ".next/types/**/*.ts", "next-env.d.ts", "**/*.ts", "**/*.tsx"],
+	"include": [
+		".",
+		".next/types/**/*.ts",
+		"next-env.d.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		"../../node_modules/@cloudflare/next-on-pages/dist/next-dev/index.d.ts"
+	],
 	"exclude": ["node_modules"]
 }
-
