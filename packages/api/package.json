@@ -16,6 +16,7 @@
 		"typecheck": "tsc --noEmit --emitDeclarationOnly false"
 	},
 	"dependencies": {
+		"@acme/env": "workspace:*",
 		"@acme/db": "workspace:*",
 		"@hono/trpc-server": "^0.2.0",
 		"@trpc/server": "11.0.0-rc.354",

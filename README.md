@@ -70,3 +70,14 @@ tooling
 To add a new package, simply run `pnpm turbo gen init` in the monorepo root. This will prompt you for a package name as well as if you want to install any dependencies to the new package (of course you can also do this yourself later).
 
 The generator sets up the `package.json`, `tsconfig.json` and a `index.ts`, as well as configures all the necessary configurations for tooling around your package such as formatting, linting and typechecking. When the package is created, you're ready to go build out the package.
+
+## Additional Reading
+
+-   [End-to-End Typesafety with Next.js, tRPC, and Zod](https://jbhutch.com/blog/end-to-end-typesafety-with-nextjs-trpc-zod/)
+
+### Managing Environment Variables
+
+-   <https://github.com/t3-oss/t3-env/issues/181>
+-   <https://github.com/t3-oss/t3-env/pull/158>
+-   <https://discord.com/channels/966627436387266600/1184312173523111986>
+-   <https://github.com/AnswerOverflow/AnswerOverflow/tree/main/packages/env>

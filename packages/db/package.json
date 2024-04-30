@@ -7,6 +7,10 @@
 		".": {
 			"types": "./dist/index.d.ts",
 			"default": "./src/index.ts"
+		},
+		"./schema": {
+			"types": "./dist/schema.d.ts",
+			"default": "./src/schema/index.ts"
 		}
 	},
 	"scripts": {
@@ -24,10 +28,12 @@
 		"with-env": "dotenv -e ../../.env --"
 	},
 	"dependencies": {
-		"@t3-oss/env-core": "^0.9.2",
+		"@acme/env": "workspace:*",
+		"add": "^2.0.6",
 		"drizzle-orm": "^0.30.9",
+		"drizzle-zod": "^0.5.1",
 		"postgres": "^3.4.4",
-		"zod": "^3.23.0"
+		"zod": "^3.23.4"
 	},
 	"devDependencies": {
 		"@acme/eslint-config": "workspace:*",
