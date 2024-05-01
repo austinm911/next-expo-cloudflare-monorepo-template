@@ -1,5 +1,7 @@
 {
 	"name": "@acme/api",
+	"type": "module",
+	"private": true,
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",

@@ -1,6 +1,6 @@
 import type { Config } from 'drizzle-kit'
 
-import { createValidatedEnv } from '@acme/env'
+import { createValidatedEnv } from '@acme/env/server'
 
 const env = createValidatedEnv(process.env)
 

@@ -37,8 +37,8 @@ const app = new Hono<{ Bindings: HonoContext['env'] }>()
 		}
 		return await cors({
 			origin: (origin) => {
-				const cloudflarePreviewRegexNext = new RegExp(`\.${c.env.NEXT_PAGES_PROJECT_NAME}\.pages\.dev$`)
-				const cloudflarePreviewRegexSpa = new RegExp(`\.${c.env.SPA_PAGES_PROJECT_NAME}\.pages\.dev$`)
+				const cloudflarePreviewRegexNext = new RegExp(`${c.env.NEXT_PAGES_PROJECT_NAME}.pages.dev$`)
+				const cloudflarePreviewRegexSpa = new RegExp(`${c.env.SPA_PAGES_PROJECT_NAME}.pages.dev$`)
 				const appHost = new URL(c.env.APP_NEXT_URL).host
 				const spaHost = new URL(c.env.APP_SPA_URL).host
 				const preview = 'http://localhost:8788' // cloudflare pages preview

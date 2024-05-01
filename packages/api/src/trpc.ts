@@ -45,14 +45,14 @@ export const publicProcedure = t.procedure
  * @see https://trpc.io/docs/procedures
  */
 export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
-	//@ts-expect-error
+	//@ts-expect-error Holdover from t3-repo
 	if (!ctx.session?.user) {
 		throw new TRPCError({ code: 'UNAUTHORIZED' })
 	}
 	return next({
 		ctx: {
 			// infers the `session` as non-nullable
-			//@ts-expect-error
+			//@ts-expect-error Holdover from t3-repo
 			session: { ...ctx.session, user: ctx.session.user },
 		},
 	})
