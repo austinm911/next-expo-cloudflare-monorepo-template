@@ -1,7 +1,5 @@
 'use client'
 
-import { useMemo } from 'react'
-
 import { trpc } from '@/trpc/client'
 
 const TestClient = () => {
