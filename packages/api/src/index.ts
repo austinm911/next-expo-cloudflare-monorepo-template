@@ -1,12 +1,11 @@
-import { trpcServer } from '@hono/trpc-server' // Deno 'npm:@hono/trpc-server'
-
+import { trpcServer } from '@hono/trpc-server'
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 import { prettyJSON } from 'hono/pretty-json'
 
-import type { BaseEnv } from '@acme/env'
+import type { BaseEnv } from '@acme/env/server'
 import { createDb } from '@acme/db'
-import { createValidatedEnv } from '@acme/env'
+import { createValidatedEnv } from '@acme/env/server'
 
 import type { AppRouter } from './routers.ts'
 import { createTRPCContext } from './context'
@@ -26,6 +25,7 @@ const app = new Hono<{ Bindings: HonoContext['env'] }>()
 		const { DB, ...restEnv } = c.env
 		// Only validate the .dev.vars file in development
 		createValidatedEnv(restEnv)
+		console.log(`Context: ${JSON.stringify(c.env, null, 2)}`)
 		return next()
 	})
 	// Setup CORS for the frontend'
@@ -37,11 +37,18 @@ const app = new Hono<{ Bindings: HonoContext['env'] }>()
 		}
 		return await cors({
 			origin: (origin) => {
+				const cloudflarePreviewRegexNext = new RegExp(`\.${c.env.NEXT_PAGES_PROJECT_NAME}\.pages\.dev$`)
+				const cloudflarePreviewRegexSpa = new RegExp(`\.${c.env.SPA_PAGES_PROJECT_NAME}\.pages\.dev$`)
 				const appHost = new URL(c.env.APP_NEXT_URL).host
 				const spaHost = new URL(c.env.APP_SPA_URL).host
 				const preview = 'http://localhost:8788' // cloudflare pages preview
-				console.log(appHost, spaHost, preview)
-				return origin.endsWith(appHost) || origin.endsWith(spaHost) || origin.endsWith(preview)
+				console.log('Origin: ', origin)
+				console.log(`CloudflarePreviewRegexNext: ${cloudflarePreviewRegexNext.source}`)
+				return origin.endsWith(appHost) ||
+					origin.endsWith(spaHost) ||
+					origin.endsWith(preview) ||
+					cloudflarePreviewRegexNext.test(origin) ||
+					cloudflarePreviewRegexSpa.test(origin)
 					? origin
 					: c.env.APP_NEXT_URL
 			},
@@ -59,8 +66,7 @@ const app = new Hono<{ Bindings: HonoContext['env'] }>()
 	)
 	.use(prettyJSON())
 	.get('/', (c) => {
-		console.log(c.env)
-		return c.text(`Hello World! ${c.env.APP_NEXT_URL}`)
+		return c.text(`Hello World! ${JSON.stringify(c.env, null, 2)}`)
 	})
 
 export default app

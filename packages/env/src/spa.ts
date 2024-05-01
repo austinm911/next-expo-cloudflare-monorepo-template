@@ -1,17 +1,15 @@
 import { createEnv } from '@t3-oss/env-core'
 import { z } from 'zod'
 
-import { createValidatedEnv } from './base'
-
-const base = createValidatedEnv(process.env)
+import 'vite/client' // for import.meta.env typing
 
 export const env = createEnv({
-	extends: [base],
 	/**
 	 * What object holds the environment variables at runtime. This is usually
 	 * `process.env` or `import.meta.env`.
 	 */
-	runtimeEnv: process.env,
+
+	runtimeEnv: import.meta.env,
 	/**
 	 * The prefix that client-side variables must have. This is enforced both at
 	 * a type-level and at runtime.

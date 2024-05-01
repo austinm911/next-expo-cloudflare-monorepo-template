@@ -7,6 +7,7 @@ import { createTRPCReact } from '@trpc/react-query'
 import SuperJSON from 'superjson'
 
 import type { AppRouter } from '@acme/api'
+import { env } from '@acme/env/next'
 
 export const trpc = createTRPCReact<AppRouter>()
 
@@ -75,7 +76,7 @@ export function TRPCReactProvider(props: { children: React.ReactNode }) {
 
 const getBaseUrl = () => {
 	if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}` //TODO: change to cloudflare pages hosted url
-	console.log(process.env.PUBLIC_API_URL)
+	// console.log(process.env.PUBLIC_API_URL)
 	// eslint-disable-next-line no-restricted-properties
-	return 'http://localhost:8787' // cloudflare workers dev server
+	return `${env.NEXT_PUBLIC_API_URL}` // cloudflare workers dev server
 }
