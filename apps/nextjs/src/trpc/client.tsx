@@ -2,13 +2,14 @@
 
 import { useState } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { httpBatchLink, loggerLink, unstable_httpBatchStreamLink } from '@trpc/client'
+import { loggerLink, unstable_httpBatchStreamLink } from '@trpc/client'
 import { createTRPCReact } from '@trpc/react-query'
 import SuperJSON from 'superjson'
 
 import type { AppRouter } from '@acme/api'
+import { env } from '@acme/env/next'
 
-export const api = createTRPCReact<AppRouter>()
+export const trpc = createTRPCReact<AppRouter>()
 
 const createQueryClient = () =>
 	new QueryClient({
@@ -36,7 +37,7 @@ export function TRPCReactProvider(props: { children: React.ReactNode }) {
 	const queryClient = getQueryClient()
 
 	const [trpcClient] = useState(() =>
-		api.createClient({
+		trpc.createClient({
 			links: [
 				loggerLink({
 					// https://trpc.io/docs/client/links/loggerLink
@@ -66,16 +67,16 @@ export function TRPCReactProvider(props: { children: React.ReactNode }) {
 
 	return (
 		<QueryClientProvider client={queryClient}>
-			<api.Provider client={trpcClient} queryClient={queryClient}>
+			<trpc.Provider client={trpcClient} queryClient={queryClient}>
 				{props.children}
-			</api.Provider>
+			</trpc.Provider>
 		</QueryClientProvider>
 	)
 }
 
 const getBaseUrl = () => {
 	if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}` //TODO: change to cloudflare pages hosted url
-	console.log(process.env.PUBLIC_API_URL)
+	// console.log(process.env.PUBLIC_API_URL)
 	// eslint-disable-next-line no-restricted-properties
-	return 'http://localhost:8787' // cloudflare workers dev server
+	return `${env.NEXT_PUBLIC_API_URL}` // cloudflare workers dev server
 }

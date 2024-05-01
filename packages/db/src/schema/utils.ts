@@ -1,4 +1,4 @@
-import { date, varchar } from 'drizzle-orm/pg-core'
+import { date } from 'drizzle-orm/pg-core'
 
 export const dateFields = {
 	createdAt: date('created_at').defaultNow(),

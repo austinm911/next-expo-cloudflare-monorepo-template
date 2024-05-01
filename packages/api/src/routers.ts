@@ -1,4 +1,4 @@
-import { inferRouterInputs, inferRouterOutputs } from '@trpc/server'
+import type { inferRouterInputs, inferRouterOutputs } from '@trpc/server'
 
 import { postRouter } from './routers/posts'
 import { createCallerFactory, createTRPCRouter } from './trpc'

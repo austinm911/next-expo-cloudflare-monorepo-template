@@ -1,0 +1,3 @@
+# Ignore Handlebars files in Turbo folder
+*.hbs 
+

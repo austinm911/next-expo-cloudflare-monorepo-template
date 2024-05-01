@@ -5,6 +5,7 @@ import { createTRPCReact } from '@trpc/react-query'
 import superjson from 'superjson'
 
 import type { AppRouter } from '@acme/api'
+import { env } from '@acme/env/spa'
 
 /**
  * A set of typesafe hooks for consuming your API.
@@ -25,7 +26,7 @@ export function TRPCProvider({ children }: { children: React.ReactNode }) {
 				}),
 				httpBatchLink({
 					transformer: superjson,
-					url: `http://localhost:8787/trpc`, // api url
+					url: `${env.API_URL}/trpc`, // api url
 					headers() {
 						const headers = new Map<string, string>()
 						headers.set('x-trpc-source', 'react-spa')
